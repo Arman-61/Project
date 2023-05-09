@@ -1,0 +1,112 @@
+# Theatre ticket booking system
+silver=500
+gold=400
+vip=100
+sprice=300
+gprice=400
+vprice=600
+ice_cream=200
+popcorn=300
+combo=500
+movies="""     fight club 
+     inception
+     shulter island"""
+snakk="""     ice cream = 200
+     popcorn = 300
+     combo = 500"""
+while True:
+    total  = 0
+    name = input("enter you'r name")
+    print("hi",name,"welcome to triton mall cinema.: ")
+    print("today's movies are")
+    print(movies)
+    movie = input("which movie do you want to watch.: ")
+    if movie not in movies:
+        print("invalid input")
+        continue
+    
+    print("""seat's are 
+     silver = 400
+     gold = 600
+     vip = 1300 """)
+    seat = input("which seat do you want to have.: ").lower()
+    if seat not in ["silver", "gold", "vip"]:
+        print("Invalid seat type. Please choose from silver, gold, or vip.")
+        continue
+    nseat = int(input("how many seats do you want: "))
+   
+
+    if seat == 'silver':
+        if nseat>silver:
+            print('number of seats available are',silver, 'cannot book more than this')
+        else:
+            total+=sprice*nseat
+            silver-=nseat
+            sna=input("do you want some snaks.[yes/no]")
+            if sna in["yes","Yes","YES"]:
+                print(snakk)
+                snaks=input("which snaks do you want to add: ")
+                if snaks not in ['ice cream', 'popcorn', 'combo']:
+                    print("invalid input")
+                    continue
+                if snaks == 'ice cream':
+                    total+=200
+                elif snaks == 'popcorn':
+                    total+=300
+                elif snaks == 'combo':
+                    total+=500
+            
+        
+    elif seat == 'gold':
+        if nseat>gold:
+            print('number of seats available are', gold, '"cannot book more than this')
+        else:
+            total+=gprice*nseat
+            gold-=nseat
+            
+            sna=input("do you want some snaks.[yes/no]")
+            if sna in["yes","Yes","YES"]:
+                print(snakk)
+                snaks=input("which snaks do you want to add: ")
+                if snaks not in ['ice cream', 'popcorn', 'combo']:
+                    print("invalid input")
+                    continue
+                if snaks == 'ice cream':
+                    total+=200
+                elif snaks == 'popcorn':
+                    total+=300
+                elif snaks == 'combo':
+                    total+=500
+    
+    elif seat == 'vip':
+        if nseat>vip:
+            print('number of seats available are',vip, 'cannot book more than this')
+        else:
+            total+=vprice*nseat
+            vip-=nseat
+    
+            sna=input("do you want some snaks.[yes/no]")
+            if sna in["yes","Yes","YES"]:
+                print(snakk)
+                snaks=input("which snaks do you want to add: ")
+                if snaks not in ['ice cream', 'popcorn', 'combo']:
+                    print("invalid input")
+                    continue
+                if snaks == 'ice cream':
+                    total+=200
+                elif snaks == 'popcorn':
+                    total+=300
+                elif snaks == 'combo':
+                    total+=500
+    
+    print("you'r total bill is:", total)
+    repeat = input("do you want to add another person.: ")
+    if repeat in ["yes","Yes","YES"]:
+        continue
+    else:
+        print("seats are left ")
+        print("silver seats left",silver)
+        print("gold seats left",gold)
+        print("vip seats left",vip)
+        print("have a good day: ")
+        break
