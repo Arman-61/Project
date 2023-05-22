@@ -1,0 +1,65 @@
+
+username = "admin"
+password = "admin123"
+
+borrowed_books = {}
+print("Enter Your User Name and password: ")
+user = input("Enter Your Good Name[admin]: ")
+if user == username:
+    ps = input("Enter Your Password[admin123]: ")
+    if ps == password:
+        print("Login Successfully: ")
+        
+        while True:
+            print("Hello", user, "Welcome To Alpha Library")
+            print("""        1. Add Book
+        2. Borrow Book
+        3. Return Book
+        4. Display borrowed book details along with the person's name.""")
+
+            act = input("Enter the number you want to perform: ")
+            if act == "1":
+                books = {"english": 10, "math": 15, "geo": 5}
+                print(books)
+                add_book = input("Enter a Book Name You Want to Add: ")
+                quantity = int(input("Enter how many books you want to add: "))
+                books[add_book] = books.get(add_book, 0) + quantity
+                print("You Have Added", add_book, "book and", quantity, "quantity")
+                print(books)
+
+            elif act == "2":
+                print(books)
+                name = input("Enter your name: ")
+                book_name = input("Enter the book name: ")
+                if book_name in books and books[book_name] > 0:
+                    borrowed_books[name] = book_name
+                    books[book_name] = books[book_name] - 1
+                    print("You have borrowed", book_name)
+                    print(borrowed_books)
+                    print(books)
+                else:
+                    print("Book not in stock or out of stock.")
+
+            elif act == "3":
+                name_user = input("Enter your name: ")
+                if name_user in borrowed_books:
+                    book_name = borrowed_books[name_user]
+                    del borrowed_books[name_user]
+                    print(name_user, "has returned", book_name, "book")
+                    books[book_name] += 1  
+                    print("You have returned", book_name)
+                    print(books)
+                else:
+                    print("There is no book borrowed by this name.")
+
+            elif act == "4":
+                for name, book in borrowed_books.items():
+                    print("Name:", name, "Book:", book)
+
+            repeat = input("Do you want to execute another task? (yes/no): ")
+            if repeat == "no":
+                break
+    else:
+        print("Incorrect password")
+else:
+    print("Incorrect username")
